@@ -1,0 +1,28 @@
+POST http://localhost:3001/api/fragrances
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFwYWx0ZW1hYSIsImlkIjoiNjY3ZDkyMjdhOTRlYjE1Y2FkZmZhNzU4IiwiaWF0IjoxNzE5NTE3MDI3fQ.eHmtWJhGQwJZJrPV354rQ37q4y2kGICDKOSXaSNwYco
+
+{
+  "name": "Ocean Breeze",
+  "brand": "SeaScent",
+  "type": "Eau de Toilette",
+  "description": "A fresh oceanic fragrance with hints of salt and citrus.",
+  "notes": {
+    "top": ["Sea Salt", "Grapefruit"],
+    "middle": ["Mint", "Jasmine"],
+    "base": ["Vetiver", "Oakmoss"]
+  },
+  "rating": 4.5,
+  "user": {
+    "username": "apaltemaa",
+    "name": "Aaro Paltemaa",
+    "userId": "667d9227a94eb15cadffa758"
+  },
+  "reviews": [
+    {
+      "user": "667d9227a94eb15cadffa758",
+      "comment": "Absolutely love this scent for summer days!",
+      "rating": 5
+    }
+  ]
+}

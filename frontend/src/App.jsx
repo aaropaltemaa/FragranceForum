@@ -1,10 +1,8 @@
 
+const Test = () => console.log('hello')
+
 const App = () => {
-  return (
-    <div>
-      <h1>Hello, React 18!</h1>
-    </div>
-  )
+  return (<Test />)
 }
 
-export default App
+export default App;
