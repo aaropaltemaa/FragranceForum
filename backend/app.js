@@ -6,9 +6,11 @@ const cors = require('cors')
 const fragranceRouter = require('./controllers/fragrances')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
+const registerRouter = require('./controllers/auth')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
+const path = require('path')
 
 mongoose.set('strictQuery', false)
 
@@ -23,13 +25,16 @@ mongoose
     logger.error('error connecting to MongoDB:', error.message)
   })
 
-app.use(cors())
 app.use(express.json())
+app.use(cors())
+app.use(express.static('dist'))
 app.use(middleware.requestLogger)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 app.use('/api/fragrances', fragranceRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/register', registerRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

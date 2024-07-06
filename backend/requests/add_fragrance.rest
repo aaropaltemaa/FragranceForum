@@ -3,16 +3,13 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFwYWx0ZW1hYSIsImlkIjoiNjY3ZDkyMjdhOTRlYjE1Y2FkZmZhNzU4IiwiaWF0IjoxNzE5NTE3MDI3fQ.eHmtWJhGQwJZJrPV354rQ37q4y2kGICDKOSXaSNwYco
 
 {
-  "name": "Ocean Breeze",
-  "brand": "SeaScent",
-  "type": "Eau de Toilette",
-  "description": "A fresh oceanic fragrance with hints of salt and citrus.",
-  "notes": {
-    "top": ["Sea Salt", "Grapefruit"],
-    "middle": ["Mint", "Jasmine"],
-    "base": ["Vetiver", "Oakmoss"]
-  },
-  "rating": 4.5,
+  "name": "Dior not savage",
+  "brand": "Dior",
+  "type": "Eau de Parfum",
+  "description": "A scent for teenagers",
+  "notes": ["citrus", "woody", "amber"],
+  "longevityRating": 4,
+  "sillageRating": 3,
   "user": {
     "username": "apaltemaa",
     "name": "Aaro Paltemaa",

@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/fragrances/6687f9fbb496d57955d75b28/reviews
+Content-Type: application/json
+
+{
+    "userId": "6687e6cf33fe82f584f4ba4d",
+    "reviewText": "Test comment"
+}
+

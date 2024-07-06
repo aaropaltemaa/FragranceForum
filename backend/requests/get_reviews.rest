@@ -1,0 +1,1 @@
+GET http://localhost:3001/api/fragrances/6687ee50a9ffebd5923dd881/reviews
