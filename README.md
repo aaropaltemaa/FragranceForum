@@ -12,7 +12,7 @@ FragranceForum is a web application where users can create posts to review and d
 - Create, delete and like fragrance reviews
 - Search and filter by fragrance name, brand, etc.
 
-test
+
 
 
 ## Installation
