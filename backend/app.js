@@ -29,7 +29,19 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static('dist'))
 app.use(middleware.requestLogger)
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+
+// Serve static files from 'uploads' directory
+const staticFilesBaseUrl =
+  process.env.STATIC_FILES_BASE_URL || `http://localhost:${config.PORT}`
+app.use(
+  '/uploads',
+  express.static(path.join(__dirname, 'uploads'), {
+    setHeaders: function (res, path) {
+      // Update the base URL for static files in the 'Location' header
+      res.set('Location', staticFilesBaseUrl + '/uploads/' + path)
+    },
+  })
+)
 
 app.use('/api/fragrances', fragranceRouter)
 app.use('/api/users', usersRouter)
