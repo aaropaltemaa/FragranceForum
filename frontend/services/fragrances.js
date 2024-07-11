@@ -46,7 +46,7 @@ const like = async (review, user) => {
   };
 
   const response = await axios.put(
-    `${baseUrl}${review.id}`,
+    `${baseUrl}/${review.id}`,
     updatedReview,
     config
   );
