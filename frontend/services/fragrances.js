@@ -1,4 +1,5 @@
 import axios from "axios";
+import { apiBaseUrl } from "../constants";
 
 const baseUrl = "/api/fragrances";
 
@@ -21,7 +22,11 @@ const create = async (formData) => {
     },
   };
 
-  const response = await axios.post(`${baseUrl}/fragrances`, formData, config);
+  const response = await axios.post(
+    `${apiBaseUrl}/fragrances`,
+    formData,
+    config
+  );
   return response.data;
 };
 
@@ -46,7 +51,7 @@ const like = async (review, user) => {
   };
 
   const response = await axios.put(
-    `${baseUrl}/fragrances/${review.id}`,
+    `${apiBaseUrl}/fragrances/${review.id}`,
     updatedReview,
     config
   );
