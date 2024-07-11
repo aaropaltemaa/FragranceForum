@@ -47,7 +47,6 @@ fragranceRouter.get(
     const { id } = request.params // Fragrance ID
     try {
       const fragrance = await Fragrance.findById(id)
-      debugger
       if (!fragrance) {
         return response.status(404).json({ error: 'Fragrance not found' })
       }
@@ -61,10 +60,6 @@ fragranceRouter.get(
 fragranceRouter.post('/', upload.single('image'), async (request, response) => {
   const body = request.body
   const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
-  let imageUrl = request.file.filename
-  if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
-    imageUrl = `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageUrl}`
-  }
 
   if (!decodedToken.id) {
     return response.status(401).json({ error: 'token missing or invalid' })
@@ -79,6 +74,11 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     return response.status(400).json({ error: 'Image file is missing' })
   }
 
+  let imageUrl = request.file.filename
+  if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+    imageUrl = `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageUrl}`
+  }
+
   const fragrance = new Fragrance({
     name: body.name,
     brand: body.brand,
@@ -89,15 +89,13 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     sillageRating: body.sillageRating,
     user: user._id,
     reviews: body.reviews || [],
-    imageUrl: imageUrl || '',
+    imageUrl: body.imageUrl,
     likes: body.likes || 0,
-    likes: 0,
     createdAt: new Date(),
     updatedAt: new Date(),
   })
 
   try {
-    // Save the fragrance document to the database
     const savedFragrance = await fragrance.save()
     response.status(201).json(savedFragrance)
   } catch (error) {
