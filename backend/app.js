@@ -31,19 +31,19 @@ app.use(express.static('dist'))
 app.use(middleware.requestLogger)
 
 // Serve static files from 'uploads' directory
-// const staticFilesBaseUrl =
-//   process.env.STATIC_FILES_BASE_URL || `http://localhost:${config.PORT}`
-// app.use(
-//   '/uploads',
-//   express.static(path.join(__dirname, 'uploads'), {
-//     setHeaders: function (res, filePath) {
-//       // Extract the file name from the filePath
-//       const fileName = path.basename(filePath)
-//       // Correctly set the Location header using the fileName
-//       res.set('Location', staticFilesBaseUrl + '/uploads/' + fileName)
-//     },
-//   })
-// )
+const staticFilesBaseUrl =
+  process.env.STATIC_FILES_BASE_URL || `http://localhost:${config.PORT}`
+app.use(
+  '/uploads',
+  express.static(path.join(__dirname, 'uploads'), {
+    setHeaders: function (res, filePath) {
+      // Extract the file name from the filePath
+      const fileName = path.basename(filePath)
+      // Correctly set the Location header using the fileName
+      res.set('Location', staticFilesBaseUrl + '/uploads/' + fileName)
+    },
+  })
+)
 
 app.use('/api/fragrances', fragranceRouter)
 app.use('/api/users', usersRouter)
