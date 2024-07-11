@@ -36,6 +36,10 @@ app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/register', registerRouter)
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
