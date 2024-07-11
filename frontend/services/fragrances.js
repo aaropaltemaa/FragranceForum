@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "/fragrances";
+const baseUrl = "/api/fragrances";
 
 let token = null;
 
