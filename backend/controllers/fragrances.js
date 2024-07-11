@@ -70,6 +70,10 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     return response.status(404).json({ error: 'User not found' })
   }
 
+  if (!request.file) {
+    return response.status(400).json({ error: 'Image file is missing' })
+  }
+
   const fragrance = new Fragrance({
     name: body.name,
     brand: body.brand,
@@ -80,7 +84,7 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     sillageRating: body.sillageRating,
     user: user._id,
     reviews: body.reviews || [],
-    imageUrl: `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageName}`,
+    imageUrl: `${process.env.STATIC_FILES_BASE_URL}/uploads/${request.file.filename}`,
     likes: body.likes || 0,
     likes: 0,
     createdAt: new Date(),
