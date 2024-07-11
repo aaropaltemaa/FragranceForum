@@ -57,7 +57,7 @@ ShowReviews.propTypes = {
 const FragranceCard = ({ fragrance }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.login.user)
-    const staticFilesBaseUrl = import.meta.env.REACT_APP_STATIC_FILES_BASE_URL || 'http://localhost:3001';
+    const staticFilesBaseUrl = import.meta.env.REACT_APP_STATIC_FILES_BASE_URL
 
     const handleDelete = (id) => {
         dispatch(removeFragrance(id));
