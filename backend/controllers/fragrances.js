@@ -74,11 +74,10 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     return response.status(400).json({ error: 'Image file is missing' })
   }
 
-  let imageUrl = request.file.filename
+  let imageUrl = request.file.filename.trim()
   if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
     imageUrl = `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageUrl}`
   }
-
   const fragrance = new Fragrance({
     name: body.name,
     brand: body.brand,
