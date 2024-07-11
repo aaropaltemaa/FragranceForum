@@ -61,6 +61,11 @@ fragranceRouter.get(
 fragranceRouter.post('/', upload.single('image'), async (request, response) => {
   const body = request.body
   const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
+
+  let imageUrl = request.file.filename
+  if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+    imageUrl = `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageUrl}`
+  }
   if (!decodedToken.id) {
     return response.status(401).json({ error: 'token missing or invalid' })
   }
@@ -84,7 +89,7 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     sillageRating: body.sillageRating,
     user: user._id,
     reviews: body.reviews || [],
-    imageUrl: `${process.env.STATIC_FILES_BASE_URL}/uploads/${request.file.filename}`,
+    imageUrl: body.imageUrl,
     likes: body.likes || 0,
     likes: 0,
     createdAt: new Date(),
