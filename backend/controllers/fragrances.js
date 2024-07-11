@@ -80,7 +80,7 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     sillageRating: body.sillageRating,
     user: user._id,
     reviews: body.reviews || [],
-    imageUrl: `/uploads/${request.file.filename}`,
+    imageUrl: `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageName}`,
     likes: body.likes || 0,
     likes: 0,
     createdAt: new Date(),
