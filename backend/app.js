@@ -36,9 +36,11 @@ const staticFilesBaseUrl =
 app.use(
   '/uploads',
   express.static(path.join(__dirname, 'uploads'), {
-    setHeaders: function (res, path) {
-      // Update the base URL for static files in the 'Location' header
-      res.set('Location', staticFilesBaseUrl + '/uploads/' + path)
+    setHeaders: function (res, filePath) {
+      // Extract the file name from the filePath
+      const fileName = path.basename(filePath)
+      // Correctly set the Location header using the fileName
+      res.set('Location', staticFilesBaseUrl + '/uploads/' + fileName)
     },
   })
 )
