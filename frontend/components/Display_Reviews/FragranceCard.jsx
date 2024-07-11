@@ -9,7 +9,6 @@ import AddCommentIcon from '@mui/icons-material/AddComment';
 import { useState } from "react";
 import LikeButton from "./LikeButton";
 
-
 const ShowReviews = ({ fragrance }) => {
     const [showReviews, setShowReviews] = useState(false);
     const toggleShowReviews = () => setShowReviews(!showReviews); // Toggle showReviews state
@@ -53,7 +52,6 @@ ShowReviews.propTypes = {
     fragrance: PropTypes.object.isRequired,
 };
 
-
 const FragranceCard = ({ fragrance }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.login.user)
@@ -83,7 +81,6 @@ const FragranceCard = ({ fragrance }) => {
                 <span style={{ fontSize: 'large', marginLeft: 15 }}>{new Date(fragrance.createdAt).toLocaleString()}</span>
                 <CardContent>
                     {fragrance.imageUrl && (
-                        console.log(fragrance.imageUrl),
                         <img src={`${staticFilesBaseUrl}${fragrance.imageUrl}`} alt={fragrance.name} style={{ maxWidth: '100%', maxHeight: '300px' }} />
                     )}
                     <Typography>{fragrance.likes} likes </Typography>
