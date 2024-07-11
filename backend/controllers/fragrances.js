@@ -74,11 +74,10 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     return response.status(400).json({ error: 'Image file is missing' })
   }
 
-  // let imageUrl = request.file.filename.trim()
-  // if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
-  //   imageUrl = `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageUrl}`
-  // }
-
+  let imageUrl = request.file.filename.trim()
+  if (!imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
+    imageUrl = `${process.env.STATIC_FILES_BASE_URL}/uploads/${imageUrl}`
+  }
   const fragrance = new Fragrance({
     name: body.name,
     brand: body.brand,
@@ -89,7 +88,7 @@ fragranceRouter.post('/', upload.single('image'), async (request, response) => {
     sillageRating: body.sillageRating,
     user: user._id,
     reviews: body.reviews || [],
-    imageUrl: body.imageUrl,
+    imageUrl: imageUrl,
     likes: body.likes || 0,
     createdAt: new Date(),
     updatedAt: new Date(),
