@@ -57,6 +57,7 @@ ShowReviews.propTypes = {
 const FragranceCard = ({ fragrance }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.login.user)
+    const staticFilesBaseUrl = import.meta.env.REACT_APP_STATIC_FILES_BASE_URL || 'http://localhost:3001';
 
     const handleDelete = (id) => {
         dispatch(removeFragrance(id));
@@ -83,7 +84,7 @@ const FragranceCard = ({ fragrance }) => {
                 <CardContent>
                     {fragrance.imageUrl && (
                         console.log(fragrance.imageUrl),
-                        <img src={`http://localhost:3001${fragrance.imageUrl}`} alt={fragrance.name} style={{ maxWidth: '100%', maxHeight: '300px' }} />
+                        <img src={`${staticFilesBaseUrl}${fragrance.imageUrl}`} alt={fragrance.name} style={{ maxWidth: '100%', maxHeight: '300px' }} />
                     )}
                     <Typography>{fragrance.likes} likes </Typography>
                     <Typography variant="body3">
