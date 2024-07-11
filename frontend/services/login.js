@@ -1,8 +1,7 @@
 import axios from "axios";
-import { apiBaseUrl } from "../constants";
 
-const baseLoginUrl = `${apiBaseUrl}/login`;
-const baseRegisterUrl = `${apiBaseUrl}/register`;
+const baseLoginUrl = `/login`;
+const baseRegisterUrl = `/register`;
 
 const login = async (credentials) => {
   console.log("Sending login request with credentials:", credentials);
