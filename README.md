@@ -16,6 +16,6 @@ FragranceForum is a web application where users can create posts to review and d
 
 ## To do list
 
--  Commenting system for discussions
+- Commenting system for discussions
 - Real-time notifications for new comments
-- Configure proper image handling for creating a new review in production 
+- Configure proper image handling for creating a new review in production
